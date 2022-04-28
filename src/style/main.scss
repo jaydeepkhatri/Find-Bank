@@ -1,0 +1,27 @@
+$themecolor: #145c9e;
+$black: #30302f;
+$white: #fdfefb;
+
+@mixin padding($value) {
+    padding: $value * 8+px;    
+}
+
+@mixin margin($value) {
+    margin: $value * 8+px;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background: $white;
+    color: $black;
+}
+
+@import "./partials/navbar";
+@import "./partials/banklist";
+@import "./partials/filter";

@@ -1,0 +1,25 @@
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.formelement {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    flex-wrap: wrap;
+}
+
+select, input {
+    @include margin(1);
+    @include padding(1);
+}
+
+@media screen and (max-width: 600px) {
+    .filter, .formelement {
+        justify-content: center;
+        @include margin(1);
+    }
+
+}
