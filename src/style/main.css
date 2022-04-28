@@ -37,6 +37,7 @@ nav .title a {
   text-decoration: none;
   -webkit-transition: 0.15s;
   transition: 0.15s;
+  border: 1px solid #fdfefb;
   padding: 8px;
 }
 
@@ -69,6 +70,40 @@ nav .nav-list .nav-item a:hover {
 .bankslist {
   max-width: 1000px;
   margin: 20px auto;
+  overflow: auto;
+}
+
+.loader {
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 60px;
+}
+
+.loader svg {
+  -webkit-animation: round 1s infinite linear;
+          animation: round 1s infinite linear;
+}
+
+@-webkit-keyframes round {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes round {
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 table {
@@ -76,11 +111,24 @@ table {
   width: 100%;
   border: 1px solid #ddd;
   text-align: center;
-  overflow: scroll;
 }
 
-th {
+th, td {
   padding: 12px;
+  font-size: 0.8em;
+}
+
+tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+tr {
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+tr:hover {
+  background: #e6e6e6;
 }
 
 .filter {
@@ -125,5 +173,31 @@ select, input {
             justify-content: center;
     margin: 8px;
   }
+}
+
+.section {
+  max-width: 1000px;
+  margin: 20px auto;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.section .page-group a {
+  margin: 4px;
+  padding: 8px 16px;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.section .page-group a:hover {
+  background: #30302f;
+  color: #fdfefb;
+}
+
+.section .page-group a.active {
+  background: #145c9e;
+  color: #fdfefb;
 }
 /*# sourceMappingURL=main.css.map */
