@@ -1,6 +1,6 @@
 import "./style/main.css";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
-import { Navbar, BankList, Filter, Favorites, Help } from "./components";
+import { Navbar, BankList, Filter, Favorites, Help, Lost } from "./components";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -62,7 +62,7 @@ function App() {
         <Route path="/" index element={<Home />} />
         <Route path="favorites" element={<Favorites />} />
         <Route path="help" element={<Help />} />
-        <Route path="help" element={<Help />} />
+        <Route path="*" element={<Lost />} />
         
       </Routes>
     </>

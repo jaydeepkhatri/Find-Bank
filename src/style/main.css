@@ -14,6 +14,7 @@ body {
 nav {
   background: #145c9e;
   color: #fdfefb;
+  min-height: 80px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -22,20 +23,52 @@ nav {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-nav a {
+nav .title {
+  padding: 8px;
+}
+
+nav .title a {
   color: #fdfefb;
-  padding: 1.25rem;
   background: #145c9e;
   text-decoration: none;
   -webkit-transition: 0.15s;
   transition: 0.15s;
+  padding: 8px;
 }
 
-nav a:hover {
-  background: #fdfefb;
-  color: #30302f;
+nav .nav-list {
+  list-style: none;
+}
+
+nav .nav-list .nav-item {
+  display: inline-block;
+  margin: 16px;
+}
+
+nav .nav-list .nav-item a {
+  color: #fdfefb;
+  text-decoration: none;
+  padding: 12px;
+  vertical-align: middle;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+nav .nav-list .nav-item a svg {
+  fill: #fff;
+}
+
+nav .nav-list .nav-item a:hover {
+  color: #FFD500;
+}
+
+.bankslist {
+  max-width: 1000px;
+  margin: 20px auto;
 }
 
 table {
@@ -43,6 +76,7 @@ table {
   width: 100%;
   border: 1px solid #ddd;
   text-align: center;
+  overflow: scroll;
 }
 
 th {
@@ -61,6 +95,8 @@ th {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 20px auto;
 }
 
 .formelement {

@@ -10,6 +10,11 @@ $white: #fdfefb;
     margin: $value * 8+px;
 }
 
+@mixin container {
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
 
 * {
     margin: 0;

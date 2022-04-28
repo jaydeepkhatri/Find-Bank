@@ -1,8 +1,12 @@
+.bankslist {
+    @include container;
+}
 table {
     border-collapse: collapse;
     width: 100%;
     border: 1px solid #ddd;
     text-align: center;
+    overflow: scroll;
 }
 th {
     @include padding(1.5);

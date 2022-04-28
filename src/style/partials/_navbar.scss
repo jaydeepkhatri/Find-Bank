@@ -1,18 +1,44 @@
 nav {
     background: $themecolor;
     color: $white;
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    a {
-        color: $white;
-        padding: 1.25rem;
-        background: $themecolor;
-        text-decoration: none;
-        transition: 0.15s;
-        &:hover {
-            background: $white;
-            color: $black;
+    flex-wrap: wrap;
+
+    .title{
+        @include padding(1);
+        a {
+            color: $white;
+            background: $themecolor;
+            text-decoration: none;
+            transition: 0.15s;
+            @include padding(1);
+        }
+    } 
+
+    .nav-list {
+        list-style: none;
+        .nav-item {
+            display: inline-block;
+            @include margin(2);
+            a {
+                color: $white;
+                text-decoration: none;
+                @include padding(1.5);
+                vertical-align: middle;
+                transition: 0.1s;
+                svg {
+                    fill: #fff;
+                }
+                &:hover {
+                    color: #FFD500;
+                }
+            }
         }
     }
+}
+@media screen and (max-width: 600px) {
+
 }
