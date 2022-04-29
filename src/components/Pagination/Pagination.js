@@ -36,21 +36,21 @@ function Pagination({currentPage, banksPerPage, totalBanks, paginate, handleBank
     <>
         <div className="section">
             <div className="page-group">
-            {currentPage > 2 ? <a href="#" onClick={() => paginate(1)} title="Move to 1st page"><BiChevronsLeft /></a> : null}
-            {currentPage == 1 ? null : <a href="#" onClick={() => paginate(currentPage - 1)}><BiChevronLeft /></a>}
+            {currentPage > 2 ? <a href="#" onClick={() => paginate(1)} key="1stpage" title="Move to 1st page"><BiChevronsLeft /></a> : null}
+            {currentPage == 1 ? null : <a href="#" key="previouspage" onClick={() => paginate(currentPage - 1)}><BiChevronLeft /></a>}
             {
-                paginationNumbers.map((number) => (
+                paginationNumbers.map((number, index) => (
                     <>
                         {
                             number == currentPage
-                            ? <a href="#" onClick={() => paginate(number)} className="page-number active" key={number}>{number}</a>
-                            : <a href="#" onClick={() => paginate(number)} className="page-number" key={number}>{number}</a>
+                            ? <a href="#" onClick={() => paginate(number)} className="page-number active" key={index}>{number}</a>
+                            : <a href="#" onClick={() => paginate(number)} className="page-number" key={index}>{number}</a>
                         }
                     </>
                 ))
             }
-            {currentPage == pageNumbers.length ? null : <a href="#" onClick={() => paginate(currentPage + 1)}><BiChevronRight /></a>}
-            {(pageNumbers.length-currentPage) > 3 ? <a href="#" title="Move to last page" onClick={() => paginate(pageNumbers.length)}><BiChevronsRight /></a> : null  }
+            {currentPage == pageNumbers.length ? null : <a href="#" key="nextpage" onClick={() => paginate(currentPage + 1)}><BiChevronRight /></a>}
+            {(pageNumbers.length-currentPage) > 3 ? <a href="#" key="lastpage" title="Move to last page" onClick={() => paginate(pageNumbers.length)}><BiChevronsRight /></a> : null  }
             </div>
             <p className="">Showing <input type="number" min="1" max="50" value={banksPerPage} onChange={(e) => handleBanksPerPage(e.target.value)} /> items per page.</p>
         </div>

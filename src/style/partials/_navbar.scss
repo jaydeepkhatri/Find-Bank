@@ -27,11 +27,14 @@ nav {
             a {
                 color: $white;
                 text-decoration: none;
-                @include padding(1.5);
-                vertical-align: middle;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 transition: 0.1s;
                 svg {
                     fill: #fff;
+                    font-size: 1.25em;
+                    margin-right: 8px;
                 }
                 &:hover {
                     color: #FFD500;

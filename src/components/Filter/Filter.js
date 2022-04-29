@@ -1,4 +1,4 @@
-function Filter({city, updateCity, handleCategory, handleSearchQuery, searchQuery}) {
+function Filter({city, updateCity, handleCategory, handleSearchQuery}) {
     let timer = ''
     const countsearch = (value) => {
         timer = setTimeout(() => handleSearchQuery(value), 2500);
@@ -19,16 +19,14 @@ function Filter({city, updateCity, handleCategory, handleSearchQuery, searchQuer
                     </select>
 
                     <select id="category" onChange={(e) => handleCategory(e.target.value)}>
-                        <option value="" defaultValue disabled>Category</option>
+                        <option disabled>Category</option>
                         <option value="IFSC">IFSC</option>
                         <option value="branch">Branch</option>
                         <option value="bank_name">Bank Name</option>
                     </select>
 
                     <input type="text" placeholder="Search"
-                        onChange={(e) => {
-                            clearTimeout(timer)
-                            countsearch(e.target.value)}} />
+                        onChange={(e) => {countsearch(e.target.value)}} />
                 </div>
             </div>
         </>

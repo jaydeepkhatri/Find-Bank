@@ -27,7 +27,29 @@ body {
     color: $black;
 }
 
+.img {
+    max-width: 400px;
+}
+
+.btn {
+    @include margin(2);
+    margin-top: 20px;
+    display: inline-block;
+    padding: 12px 24px;
+    background: #145c9e;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    &:hover {
+        box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+    }
+}
+
 @import "./partials/navbar";
 @import "./partials/banklist";
 @import "./partials/filter";
 @import "./partials/pagination";
+@import "./partials/lost";
+@import "./partials/favorites";
+@import "./partials/help";
