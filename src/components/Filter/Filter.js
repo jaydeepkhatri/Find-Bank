@@ -20,7 +20,7 @@ function Filter({city, category, updateCity, searchQuery ,handleCategory, handle
                     </select>
 
                     <input type="text" value={searchQuery} placeholder="Search"
-                        onChange={(e) => {handleSearchQuery(e.target.value), e.target.focus()}} />
+                        onChange={(e) => {handleSearchQuery(e.target.value)}} />
                 </div>
             </div>
         </>

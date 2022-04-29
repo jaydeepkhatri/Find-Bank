@@ -80,9 +80,7 @@ function App() {
 
 	useEffect(() => {
 		if(category && searchQuery) {
-			let banks = Banks.filter((item) => {
-				item[category].search(searchQuery) > 0
-			});
+			let banks = Banks.filter((item) => item[category].search(searchQuery) > 0);
 			setBanks(banks);
 		}
 	}, [category, searchQuery])
