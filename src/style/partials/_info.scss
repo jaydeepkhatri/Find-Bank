@@ -1,0 +1,10 @@
+.border {
+    @include padding(1.25);
+    padding-left: 32px;
+    background: rgb(240, 240, 240);
+    border-left: 5px solid #145c9e;
+    font-size: 1.25em;
+    svg {
+        margin-right: 8px;
+    }
+}

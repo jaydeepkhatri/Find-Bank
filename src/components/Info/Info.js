@@ -1,3 +1,5 @@
+import {BiCookie} from "react-icons/bi"
+
 function Info() {
     return(
         <>
@@ -14,7 +16,11 @@ function Info() {
                     <li>Filter By Category (IFSC, Branch, Branch Name)</li>
                     <li>Save banks details</li>
                     <li>Pagination, Update number of items in page</li>
+                    <li>404 page</li>
                 </ul>
+                <div className="border">
+                    <p><BiCookie /> Created by <a href="mailto:jaydeepkhatri79@gmail.com">jaydeepkhatri</a></p>
+                </div>
             </div>
         </>
     )

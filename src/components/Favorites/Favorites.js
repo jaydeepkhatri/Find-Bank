@@ -2,7 +2,7 @@ import {AiOutlineStar, AiFillStar} from "react-icons/ai";
 import {Link} from "react-router-dom";
 import img from "../../assets/images/nodata.png";
 
-function Favorites ({addFavorite, clearAllFavorites}){
+function Favorites ({addFavorite}){
 
     //Get data from Local storage
     let Banks = [];
@@ -16,13 +16,8 @@ function Favorites ({addFavorite, clearAllFavorites}){
     let getIFSC = [].concat(...Banks).map(({ifsc})=>ifsc);
     //console.log(Banks);
 
-
-    
-    
-
     return (
         <>
-            
             <div className="bankslist">
             {
                 <>
@@ -31,7 +26,6 @@ function Favorites ({addFavorite, clearAllFavorites}){
                     <>  
                         <div className="topfav">
                             <h2>Favorites</h2>
-                            <a href="#" className="btn" onClick={() => clearAllFavorites()}>Clear All</a>
                         </div>
                         <table>
                             <tbody>

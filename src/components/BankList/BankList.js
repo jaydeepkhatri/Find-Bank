@@ -1,5 +1,6 @@
 import {RiLoader5Line} from "react-icons/ri";
 import {AiOutlineStar, AiFillStar} from "react-icons/ai";
+import img from "../../assets/images/nodata.png";
 
 function BankList({loading, Banks, addFavorite}) {
 
@@ -20,6 +21,7 @@ function BankList({loading, Banks, addFavorite}) {
             <div className="bankslist">
                 {
                     loading ? <div className="loader"><RiLoader5Line /></div> :
+                    Banks.length > 0 ?
                     <>
                     <table>
                         <tbody>
@@ -32,6 +34,7 @@ function BankList({loading, Banks, addFavorite}) {
                                 <th>Save</th>
                             </tr>
                             {
+                                
                                 Banks.map((Bank, index) => (
                                     <tr key={index}>
                                         <td>{Bank.bank_name}</td>
@@ -50,6 +53,11 @@ function BankList({loading, Banks, addFavorite}) {
                         </tbody>
                     </table>
                     </>
+                    : 
+                        <div style={{textAlign: "center"}}>
+                            <img src={img} className="img" />
+                            <h2>Oops, No data found!</h2>
+                        </div>
                 }
             </div>
         </>

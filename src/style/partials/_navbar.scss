@@ -37,6 +37,9 @@ nav {
                     margin-right: 8px;
                 }
                 &:hover {
+                    svg {
+                        fill: #FFD500;
+                    }
                     color: #FFD500;
                 }
             }

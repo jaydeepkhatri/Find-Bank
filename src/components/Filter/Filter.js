@@ -1,10 +1,4 @@
-function Filter({city, updateCity, handleCategory, handleSearchQuery}) {
-    let timer = ''
-    const countsearch = (value) => {
-        timer = setTimeout(() => handleSearchQuery(value), 2500);
-    }
-
-
+function Filter({city, category, updateCity, searchQuery ,handleCategory, handleSearchQuery}) {
     return (
         <>
             <div className="filter">
@@ -18,15 +12,15 @@ function Filter({city, updateCity, handleCategory, handleSearchQuery}) {
                         <option value="CHENNAI">Chennai</option>
                     </select>
 
-                    <select id="category" onChange={(e) => handleCategory(e.target.value)}>
+                    <select id="category" value={category} onChange={(e) => handleCategory(e.target.value)}>
                         <option disabled>Category</option>
-                        <option value="IFSC">IFSC</option>
+                        <option value="ifsc">IFSC</option>
                         <option value="branch">Branch</option>
                         <option value="bank_name">Bank Name</option>
                     </select>
 
-                    <input type="text" placeholder="Search"
-                        onChange={(e) => {countsearch(e.target.value)}} />
+                    <input type="text" value={searchQuery} placeholder="Search"
+                        onChange={(e) => {handleSearchQuery(e.target.value), e.target.focus()}} />
                 </div>
             </div>
         </>

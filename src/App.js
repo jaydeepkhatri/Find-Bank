@@ -1,33 +1,21 @@
+// Visit /info for more information on the project
+
 import "./style/main.css";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import { Navbar, BankList, Filter, Favorites, Info, Lost, Pagination, Details } from "./components";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { type } from "@testing-library/user-event/dist/type";
 
-// Need to imply routing, find bank, pagination
-
-//Add button to clear favorites
-// able to add favorites (in local storage), I can use IFSC as a favorite or directly store the complete data
-// take care of web rules, contrast, add nice comments
-
-
-// Remove console.logs
-// Create 404 Page to help return the site visitor on homepage
-// Add meta informarion
-
-// Visit /info for more information on the project
-
-
-
-//Banks INfo
+//Banks Info
 // Mumbai, Delhi, Kolkata, Chennai, Bangalore
 
 function App() {
 	const [Banks, setBanks] = useState([]);
 	const [FilteredBanks, setFilteredBanks] = useState([]);
-	const [category, setCategory] = useState("");
+	const [category, setCategory] = useState("ifsc");
 	const [favorite, setFavorite] = useState([]);
-	const [favoritBank, setFavoriteBank] = useState("");
+	const [favoriteBank, setFavoriteBank] = useState("");
 	const [searchQuery, setSearchQuery] = useState("");
 	const [isLoading, setisLoading] = useState(true);
 	const [city, setCity] = useState("KOLKATA");
@@ -54,7 +42,6 @@ function App() {
 					setBanks(res.data);
 					
 					setFilteredBanks(res.data);
-					setCategory('');
 					//Setting the data in Browser local storage
 					localStorage.setItem(city, JSON.stringify(res.data));
 					
@@ -63,8 +50,6 @@ function App() {
 			setBanks(JSON.parse(localStorage.getItem(city)));
 			setisLoading(false);
 			setFilteredBanks(JSON.parse(localStorage.getItem(city)));
-			setCategory('');
-
 		}
 
 	}, [city, favorite]);
@@ -82,12 +67,6 @@ function App() {
 		setCurrentPage(1);
 	}
 
-	//Search Query
-	useEffect(() => {
-		let Filter = Banks.find((Bank) => {
-			Bank.ifsc.includes(searchQuery)
-		});
-	}, [searchQuery])
 
 
 	const updateCity = (city) => {
@@ -96,24 +75,34 @@ function App() {
 		setCurrentPage(1);
 	}
 
-
+	//Handle Filters
 	const handleCategory = (value) => setCategory(value)
+	const handleSearchQuery = (value) => setSearchQuery(value)
+
+	useEffect(() => {
+		if(category && searchQuery) {
+			let banks = Banks.filter((item) => {
+				item[category].search(searchQuery) > 0
+			});
+			setBanks(banks);
+			console.log(banks);
+			console.log(category);
+			console.log(searchQuery);
+		}
+	}, [category, searchQuery])
 
 
-	const handleSearchQuery = (value) => {
-		setSearchQuery(value)
-	}
+	
 
 	//Favorite Check
 	useEffect(() => {
 		let getIFSC = [].concat(...favorite).map(({ifsc})=>ifsc);
-
 		//Check status of stored 
-		if (getIFSC.indexOf(favoritBank.ifsc) >= 0){
-			let newFavorite = favorite.filter((item) => item.ifsc !== favoritBank.ifsc);
+		if (getIFSC.indexOf(favoriteBank.ifsc) >= 0){
+			let newFavorite = favorite.filter((item) => item.ifsc !== favoriteBank.ifsc);
 			localStorage.setItem("Favorites", JSON.stringify(newFavorite));
 		} else {
-			let newFavorite = [...favorite, favoritBank];
+			let newFavorite = [...favorite, favoriteBank];
 			localStorage.setItem("Favorites", JSON.stringify(newFavorite));
 		}
 	}, [favorite])
@@ -129,14 +118,11 @@ function App() {
 		}
 	}
 
-	const clearAllFavorites = () => {
-		setFavorite([])
-	}
 
 	const Home = () => {
 		return (
 			<>
-				<Filter city={city} updateCity={updateCity} handleSearchQuery={handleSearchQuery} handleCategory={handleCategory} />
+				<Filter city={city} searchQuery={searchQuery} category={category} updateCity={updateCity} handleSearchQuery={handleSearchQuery} handleCategory={handleCategory} />
 				<BankList loading={isLoading} Banks={currentBanks} addFavorite={addFavorite} />
 				<Pagination currentPage={currentPage} banksPerPage={banksPerPage} totalBanks={FilteredBanks.length} paginate={paginate} handleBanksPerPage={handleBanksPerPage}  />
 			</>
@@ -148,7 +134,7 @@ function App() {
 			<Navbar />
 			<Routes>
 				<Route path="/" index element={<Home />} />
-				<Route path="favorites" element={<Favorites clearAllFavorites={clearAllFavorites} addFavorite={addFavorite} />} />
+				<Route path="favorites" element={<Favorites addFavorite={addFavorite} />} />
 				<Route path="bank-details/:ifsc" element={<Details />} />
 				<Route path="info" element={<Info />} />
 				<Route path="*" element={<Lost />} />
