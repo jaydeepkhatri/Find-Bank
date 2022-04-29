@@ -14,7 +14,6 @@ function Favorites ({addFavorite}){
     }
 
     let getIFSC = [].concat(...Banks).map(({ifsc})=>ifsc);
-    //console.log(Banks);
 
     return (
         <>

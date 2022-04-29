@@ -26,7 +26,6 @@ function App() {
 	useEffect(()=> {
 		if(localStorage.getItem("Favorites")) {
 			setFavorite(JSON.parse(localStorage.getItem("Favorites")));	
-			console.log(localStorage.getItem("Favorites"))
 		}
 	}, [])
 
@@ -85,9 +84,6 @@ function App() {
 				item[category].search(searchQuery) > 0
 			});
 			setBanks(banks);
-			console.log(banks);
-			console.log(category);
-			console.log(searchQuery);
 		}
 	}, [category, searchQuery])
 
